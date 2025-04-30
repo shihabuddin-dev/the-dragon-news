@@ -20,9 +20,6 @@
 }
 
 a.active {
-  color: #d72050;
-}
-
-a.pending {
-  color: blue;
+  @apply bg-base-300
+ text-black
 }
