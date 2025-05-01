@@ -6,6 +6,7 @@ import { auth } from '../firebase/firebase.init';
 const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const names= 'shihab'
 
     // create an user by using email and password (sign up)
     const createUser = (email, password) => {
@@ -19,9 +20,9 @@ const ContextProvider = ({ children }) => {
     }
 
     // logout
-   const logOutUser=()=>{
-    signOut(auth)
-   }
+    const logOutUser = () => {
+        signOut(auth)
+    }
 
     // keep it in this website like local storage after reload pages it will not go anywhere
     useEffect(() => {
@@ -36,16 +37,17 @@ const ContextProvider = ({ children }) => {
     }, [])
 
 
-    const userInfo = {
+    const authData = {
         user,
         loading,
         createUser,
         loginUser,
-        logOutUser
+        logOutUser,
+        names
 
     }
     return (
-        <FirebaseAuthContext value={userInfo}>
+        <FirebaseAuthContext value={authData}>
             {children}
         </FirebaseAuthContext>
     );

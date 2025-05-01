@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router';
 import user from '../assets/user.png'
 const Navbar = () => {
     return (
-        <div className='flex flex-col gap-2 md:gap-0 md:flex-row justify-around items-center'>
+        <div className='flex flex-col gap-2 md:gap-12 md:flex-row justify-around items-center'>
             <div></div>
             <div className='space-x-4 text-accent font-semibold '>
                 <NavLink to='/'>Home</NavLink>

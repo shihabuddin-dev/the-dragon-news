@@ -7,13 +7,6 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AuthLayout from "../layout/AuthLayout";
 
-// import About from "../pages/about/About";
-// import Blogs from "../pages/blogs/Blogs";
-// import SignIn from "../pages/signin/SignIn";
-// import SignUp from "../pages/signUp/SignUp";
-// import PrivateRoutes from "./PrivateRoutes";
-// import Profile from "../pages/profile/Profile";
-// import News from "../pages/news/News";
 
 const router = createBrowserRouter([
     {
@@ -27,11 +20,6 @@ const router = createBrowserRouter([
                 loader: () => fetch('/news.json'),
                 Component: CategoryNews
             },
-            // { path: '/signin', Component: SignIn },
-            // { path: '/signup', Component: SignUp },
-            // { path: '/about', Component: About },
-            // { path: '/blogs', Component: Blogs },
-
             // private routes 
 
             // {

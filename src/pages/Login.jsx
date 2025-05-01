@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { FirebaseAuthContext } from '../provider/FirebaseAuthContext';
 
 const Login = () => {
+const {names}=use(FirebaseAuthContext)
+
     return (
         <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
