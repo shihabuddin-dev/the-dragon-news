@@ -17,14 +17,18 @@ const router = createBrowserRouter([
         Component: Root,
         children: [
             { index: true, Component: Home },
-            { path: '/category/:id', Component: CategoryNews },
+            {
+                path: '/category/:id',
+                loader: () => fetch('/news.json'),
+                Component: CategoryNews
+            },
             // { path: '/signin', Component: SignIn },
             // { path: '/signup', Component: SignUp },
             // { path: '/about', Component: About },
             // { path: '/blogs', Component: Blogs },
 
             // private routes 
-            
+
             // {
             //     path: '/profile',
             //     element:
