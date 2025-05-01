@@ -18,12 +18,18 @@ const Root = () => {
           <Navbar />
         </nav>
       </header>
-      <main className='w-11/12 mx-auto my-4 grid grid-cols-12 gap-2'>
-        <aside className='col-span-3'>
+      <main className='w-11/12 mx-auto my-4 grid md:grid-cols-12 gap-3 md:gap-5'>
+
+        {/* just for small display  */}
+        {/* <aside className='md:hidden md:col-span-3'>
+          <RightAside />
+        </aside> */}
+
+        <aside className='md:col-span-3'>
           <LeftAside />
         </aside>
-        <section className='main col-span-6'>  <Outlet /></section>
-        <aside className='col-span-3'>
+        <section className='md:col-span-6'>  <Outlet /></section>
+        <aside className='md:col-span-3'>
           <RightAside />
         </aside>
       </main>

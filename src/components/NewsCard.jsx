@@ -18,7 +18,7 @@ const NewsCard = ({ news }) => {
     const formattedDate = format(new Date(author.published_date), "yyyy-MM-dd");
 
     return (
-        <div className="rounded-lg bg-white shadow-md max-w-md mx-auto">
+        <div className="rounded-lg bg-white shadow-md mx-auto">
             {/* Author Info */}
             <div className="flex items-center justify-between p-4 bg-gray-100 rounded-t-lg">
                 <div className="flex items-center gap-3">
