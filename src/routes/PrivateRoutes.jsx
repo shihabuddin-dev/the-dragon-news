@@ -1,13 +1,14 @@
 import React, { use } from 'react';
 import { FirebaseAuthContext } from '../context/FirebaseAuthContext';
 import { Navigate, useLocation } from 'react-router';
+import Spinner from '../components/Spinner';
 
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = use(FirebaseAuthContext)
     const location = useLocation()
 
     if (loading) {
-        return <div className="w-16 h-16 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+        return <Spinner/>
     }
 
     // if user don't found login so sent to login pages to login 

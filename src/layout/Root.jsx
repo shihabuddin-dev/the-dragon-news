@@ -25,11 +25,11 @@ const Root = () => {
           <RightAside />
         </aside> */}
 
-        <aside className='md:col-span-3'>
+        <aside className='md:col-span-3 h-fit md:sticky top-4'>
           <LeftAside />
         </aside>
         <section className='md:col-span-6'>  <Outlet /></section>
-        <aside className='md:col-span-3'>
+        <aside className='md:col-span-3 h-fit md:sticky top-4'>
           <RightAside />
         </aside>
       </main>

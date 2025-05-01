@@ -3,7 +3,7 @@ import bgImage from '../../assets/bg.png'
 
 const RightBottomImg = () => {
     return (
-        <div>
+        <div className='hidden md:grid'>
             <img className='rounded-md' src={bgImage} alt="bg images" />
         </div>
     );
