@@ -3,21 +3,39 @@ import { Link } from 'react-router';
 import { FirebaseAuthContext } from '../provider/FirebaseAuthContext';
 
 const Login = () => {
-const {names}=use(FirebaseAuthContext)
+    const { loginUser } = use(FirebaseAuthContext)
+
+    const handleLogin = e => {
+        e.preventDefault()
+        const form = e.target; //just for reuseable
+        const email = form.email.value
+        const password = form.password.value
+        loginUser(email, password)
+            .then((userCredential) => {
+                const currentUser = userCredential.user;
+                console.log(currentUser)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+                alert(errorCode, errorMessage)
+            });
+    }
 
     return (
         <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
                 <h3 className='text-center font-semibold text-xl md:text-2xl'>Login Your Account</h3>
-                <form className="fieldset mt-2">
+                <form onSubmit={handleLogin} className="fieldset mt-2">
                     {/* email  */}
                     <label className="label font-semibold text-sm">Email</label>
-                    <input name='email' type="email" className="input focus:outline-none focus:shadow-outline focus:border-2" placeholder="Enter Your Email" />
+                    <input name='email' type="email" className="input focus:outline-none focus:shadow-outline focus:border-2" placeholder="Enter Your Email" required />
                     {/* password  */}
                     <label className="label font-semibold text-sm">Password</label>
-                    <input name='password' type="password" className="input focus:outline-none focus:shadow-outline focus:border-2" placeholder="Enter Your Password" />
-                    <button className="btn btn-neutral mt-4">Login</button>
-                    <p className='text-center mt-4'>Don't have an Account? <Link to='/auth/register' className='link link-hover text-secondary'>Register</Link> </p>
+                    <input name='password' type="password" className="input focus:outline-none focus:shadow-outline focus:border-2" placeholder="Enter Your Password" required />
+                    <button type='submit' className="btn btn-neutral mt-4">Login</button>
+                    <p className='text-center mt-4'>Don't have an Account?<Link to='/auth/register' className='link link-hover text-secondary'> Register</Link></p>
                 </form>
             </div>
         </div>

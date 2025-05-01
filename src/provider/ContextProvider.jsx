@@ -6,7 +6,6 @@ import { auth } from '../firebase/firebase.init';
 const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const names= 'shihab'
 
     // create an user by using email and password (sign up)
     const createUser = (email, password) => {
@@ -40,10 +39,10 @@ const ContextProvider = ({ children }) => {
     const authData = {
         user,
         loading,
+        setUser,
         createUser,
         loginUser,
         logOutUser,
-        names
 
     }
     return (
