@@ -1,4 +1,4 @@
-Here's a well-structured `README.md` file for your **The Dragon News** React project. This template includes setup instructions, features, and technology used, and it can be customized further as needed:
+**The Dragon News** React project. This template includes setup instructions, features, and technology used, and it can be customized further as needed:
 
 ---
 
