@@ -1,10 +1,10 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FirebaseAuthContext } from '../provider/FirebaseAuthContext';
 
 const Login = () => {
     const { loginUser } = use(FirebaseAuthContext)
-
+    const navigate = useNavigate()
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target; //just for reuseable
@@ -14,6 +14,7 @@ const Login = () => {
             .then((userCredential) => {
                 const currentUser = userCredential.user;
                 console.log(currentUser)
+                navigate('/')
             })
             .catch((error) => {
                 const errorCode = error.code;

@@ -1,10 +1,10 @@
 import React, { use } from 'react';
-import { FirebaseAuthContext } from '../context/FirebaseAuthContext';
 import { Navigate, useLocation } from 'react-router';
+import { FirebaseAuthContext } from '../provider/FirebaseAuthContext';
 import Spinner from '../components/Spinner';
 
 const PrivateRoutes = ({ children }) => {
-    const { user, loading } = use(FirebaseAuthContext)
+    const { user,loading } = use(FirebaseAuthContext)
     const location = useLocation()
 
     if (loading) {
@@ -13,7 +13,7 @@ const PrivateRoutes = ({ children }) => {
 
     // if user don't found login so sent to login pages to login 
     if (!user) {
-        return <Navigate state={location?.pathname} to='/signin' />
+        return <Navigate state={location?.pathname} to='/auth/login' />
     }
 
     return children
