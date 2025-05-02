@@ -16,14 +16,14 @@ const Navbar = () => {
     }
     return (
         <div className='flex flex-col gap-2 md:gap-12 md:flex-row justify-between items-center'>
-            <div>{user && user.email}</div>
+            <div>Welcome, <span className='font-semibold'>{user && user.displayName}</span></div>
             <div className='space-x-4 text-accent font-semibold '>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/about'>About</NavLink>
                 <NavLink to='/career'>Career</NavLink>
             </div>
             <div className='flex items-center gap-3'>
-                <img src={userImg} alt="" />
+                <img className='w-12 rounded-full border-2 border-primary' src={user ? user.photoURL : userImg} alt="" />
                 {
                     user ?
                         <button onClick={handleLogOut} className='btn btn-secondary px-8'>Log Out</button> :

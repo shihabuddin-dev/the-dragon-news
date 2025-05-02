@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router';
 import { FirebaseAuthContext } from '../provider/FirebaseAuthContext';
 
 const Register = () => {
-    const { createUser, setUser } = use(FirebaseAuthContext)
-const navigate=useNavigate()
+    const { createUser, setUser, updateUser } = use(FirebaseAuthContext)
+    const navigate = useNavigate()
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -12,13 +12,17 @@ const navigate=useNavigate()
         const photo = form.photo.value
         const email = form.email.value
         const password = form.password.value
-        console.log(name, photo)
         createUser(email, password)
             .then((userCredential) => {
                 const currentUser = userCredential.user;
-                console.log(currentUser)
-                setUser(currentUser)
-                navigate('/')
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...currentUser, displayName: name, photoURL: photo })
+                        navigate('/')
+                    }).catch((error) => {
+                        console.log(error)
+                        setUser(currentUser)
+                    });
             })
             .catch((error) => {
                 const errorCode = error.code;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FirebaseAuthContext } from './FirebaseAuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { auth } from '../firebase/firebase.init';
 
 const ContextProvider = ({ children }) => {
@@ -22,11 +22,15 @@ const ContextProvider = ({ children }) => {
     const logOutUser = () => {
         signOut(auth)
     }
+    // update profile 
+    const updateUser = (updatedData) => {
+        return updateProfile(auth.currentUser, updatedData)
+    }
 
     // keep it in this website like local storage after reload pages it will not go anywhere
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('inside useEffect on auth state change', currentUser)
+            // console.log('inside useEffect on auth state change', currentUser)
             setUser(currentUser)
             setLoading(false)
         })
@@ -43,6 +47,7 @@ const ContextProvider = ({ children }) => {
         createUser,
         loginUser,
         logOutUser,
+        updateUser
 
     }
     return (

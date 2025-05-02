@@ -1,10 +1,12 @@
-import React, { use } from 'react';
-import { Link, useNavigate } from 'react-router';
+import React, { use, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { FirebaseAuthContext } from '../provider/FirebaseAuthContext';
 
 const Login = () => {
+    const [error, setError] = useState('')
     const { loginUser } = use(FirebaseAuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target; //just for reuseable
@@ -13,14 +15,14 @@ const Login = () => {
         loginUser(email, password)
             .then((userCredential) => {
                 const currentUser = userCredential.user;
-                console.log(currentUser)
-                navigate('/')
+                alert(currentUser)
+                // console.log(currentUser)
+                // when user come from another pages that time after complete login redirect this pages 
+                navigate(`${location?.state ? location.state : '/'}`)
             })
             .catch((error) => {
                 const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
-                alert(errorCode, errorMessage)
+                setError(errorCode)
             });
     }
 
@@ -35,6 +37,9 @@ const Login = () => {
                     {/* password  */}
                     <label className="label font-semibold text-sm">Password</label>
                     <input name='password' type="password" className="input focus:outline-none focus:shadow-outline focus:border-2" placeholder="Enter Your Password" required />
+                    {
+                        error && <p className='text-sm text-red-500'>{error}</p>
+                    }
                     <button type='submit' className="btn btn-neutral mt-4">Login</button>
                     <p className='text-center mt-4'>Don't have an Account?<Link to='/auth/register' className='link link-hover text-secondary'> Register</Link></p>
                 </form>

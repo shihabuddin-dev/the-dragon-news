@@ -8,12 +8,14 @@ import Register from "../pages/Register";
 import AuthLayout from "../layout/AuthLayout";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRoutes from "./PrivateRoutes";
+import ErrorPage from "../pages/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         Component: Root,
+        errorElement: <ErrorPage/>,
         children: [
             { index: true, Component: Home },
             {
@@ -47,10 +49,7 @@ const router = createBrowserRouter([
             <NewsDetails />
         </PrivateRoutes>
     },
-    {
-        path: '*',
-        element: <h2>Error</h2>
-    }
+    
 ]);
 
 export default router;
