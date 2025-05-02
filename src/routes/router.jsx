@@ -9,6 +9,7 @@ import AuthLayout from "../layout/AuthLayout";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import ErrorPage from "../pages/ErrorPage";
+import Career from "../pages/Career";
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
                 hydrateFallbackElement: <Spinner />,
                 loader: () => fetch('../news.json'),
                 Component: CategoryNews
+            },
+            {
+                path: 'career',
+                Component: Career
             }
         ]
     },
